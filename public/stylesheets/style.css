@@ -1,0 +1,54 @@
+body {
+  background: #048BA8;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: auto;
+}
+
+body h1 a {
+  color: #16DB93;
+}
+
+/*NEW EXERCISE*/
+#new_exercise {
+  border-radius: 15px;
+  background: #A4036F;
+}
+
+.new_exercise {
+  margin-bottom: 5%;
+
+}
+
+.new_exercise ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.new_exercise li {
+  text-align: center;
+}
+
+/*EXERCISES LIST*/
+.exercises {
+  color: white;
+}
+.exercises li {
+  display: inline;
+}
+
+.exercises ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+.exercises input {
+  color: black;
+}
+
+/*EDIT EXERCISE*/
+.edit {
+  border-radius: 15px;
+  background: #A4036F;
+}

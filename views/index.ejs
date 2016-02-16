@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="fitster">
+
+<head>
+  <title>Fitster</title>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+  <script src="/javascripts/angularApp.js"></script>
+  <script src="/javascripts/exercises/exercises.controller.js"></script>
+</head>
+
+<body >
+  <h1><a href="/"><%= title %></a></h1>
+  <div class="new_exercise" ng-controller="exercisesController as exercisesViewModel">
+  <div class="btn btn-primary" id="new_exercise" ng-click="exercisesViewModel.toggleForm()">New Exercise</div>
+
+        <form ng-show="exercisesViewModel.formIsVisible" ng-submit="exercisesViewModel.create()">
+          <input type="text" name="exerciseName" ng-model="exercisesViewModel.exerciseName">
+          <input type="text" name="exerciseCount" ng-model="exercisesViewModel.exerciseCount">
+          <button class="btn btn-primary" type="submit" name="button">Create</button>
+        </form>
+
+
+
+  <div class="exercises">
+    <div ng-repeat="exercise in exercisesViewModel.exercises">
+      <ul>
+        <li ng-show="!editExcercise">{{exercise.exerciseName}}: {{exercise.exerciseCount}}</li>
+        <li><button class ='edit btn btn-primary' ng-click="exercisesViewModel.edit($index);editExercise = !editExercise">Edit</button></li>
+        <li>
+          <form ng-show="editExercise">
+            <input type="text" name="exerciseName" ng-model="exercisesViewModel.exerciseName">
+            <input type="text" name="exerciseCount" ng-model="exercisesViewModel.exerciseCount">
+            <button class="new btn btn-primary" ng-click="exercisesViewModel.update($index); editExercise = !editExercise">Save</button>
+            <button ng-click='editExercise = !editExercise' class='cancel btn btn-primary'>Cancel</button>
+            <button class="new btn btn-primary" ng-click="exercisesViewModel.delete($index); editExercise = !editExercise">Delete</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+
+
+</html>
