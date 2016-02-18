@@ -7,41 +7,22 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
   <script src="/javascripts/angularApp.js"></script>
   <script src="/javascripts/exercises/exercises.controller.js"></script>
+  <script src="/javascripts/exercises/exercises.module.js"></script>
+  <script src="/javascripts/exercises/index.controller.js"></script>
+  <script src="/javascripts/exercises/show.controller.js"></script>
+  <script src="/javascripts/exercises/exercises.factory.js"></script>
+  <script src="/javascripts/exercises/bls.factory.js"></script>
+  <script src="/javascripts/exercises/bls.controller.js"></script>
 </head>
 
 <body >
-  <h1><a href="/"><%= title %></a></h1>
-  <div class="new_exercise" ng-controller="exercisesController as exercisesViewModel">
-  <div class="btn btn-primary" id="new_exercise" ng-click="exercisesViewModel.toggleForm()">New Exercise</div>
+  <h1><a data-ui-sref="exercises"><%= title %></a></h1>
+  <div data-ui-view></div>
 
-        <form ng-show="exercisesViewModel.formIsVisible" ng-submit="exercisesViewModel.create()">
-          <input type="text" name="exerciseName" ng-model="exercisesViewModel.exerciseName">
-          <input type="text" name="exerciseCount" ng-model="exercisesViewModel.exerciseCount">
-          <button class="btn btn-primary" type="submit" name="button">Create</button>
-        </form>
-
-
-
-  <div class="exercises">
-    <div ng-repeat="exercise in exercisesViewModel.exercises">
-      <ul>
-        <li ng-show="!editExcercise">{{exercise.exerciseName}}: {{exercise.exerciseCount}}</li>
-        <li><button class ='edit btn btn-primary' ng-click="exercisesViewModel.edit($index);editExercise = !editExercise">Edit</button></li>
-        <li>
-          <form ng-show="editExercise">
-            <input type="text" name="exerciseName" ng-model="exercisesViewModel.exerciseName">
-            <input type="text" name="exerciseCount" ng-model="exercisesViewModel.exerciseCount">
-            <button class="new btn btn-primary" ng-click="exercisesViewModel.update($index); editExercise = !editExercise">Save</button>
-            <button ng-click='editExercise = !editExercise' class='cancel btn btn-primary'>Cancel</button>
-            <button class="new btn btn-primary" ng-click="exercisesViewModel.delete($index); editExercise = !editExercise">Delete</button>
-          </form>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
 
 
 

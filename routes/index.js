@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
-
+var request = require('request');
 var Exercise = mongoose.model('Exercise');
 
 /* GET home page. */
@@ -49,5 +49,28 @@ router.delete('/exercises/:exercise', function(req, res){
     res.json({message: 'Deleted!'});
   });
 });
+
+router.get('/bls',function(req,res){
+  request({
+        "url":"http://api.bls.gov/publicAPI/v2/timeseries/data/",
+        "method":"POST",
+        "headers":{
+          "Content-Type":"application/json"
+        },
+        "body":'{"seriesid":["SMU06310840000000001", "SMU06401400000000001" ]}'
+      }, handlePost);
+
+  function handlePost(err, response, body){
+    if(!err && response.statusCode < 400){
+      var info = JSON.parse(body);
+      res.json(info);
+    } else {
+      console.log(err);
+      console.log(response.statusCode);
+    }
+  }
+
+});
+
 
 module.exports = router;

@@ -47,6 +47,10 @@ body h1 a {
   color: black;
 }
 
+.exercises a {
+  color: white;
+}
+
 /*EDIT EXERCISE*/
 .edit {
   border-radius: 15px;
